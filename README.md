@@ -1,5 +1,7 @@
 # flutter_application_1
 
+#Flutter_Mobile
+### 9월 5일 : 프로젝트 환경 설정과 생성/실행 확인 완료
 A new Flutter project.
 
 ## Getting Started
