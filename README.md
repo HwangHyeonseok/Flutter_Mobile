@@ -1,7 +1,8 @@
 # flutter_application_1
 
 #Flutter_Mobile
-### 9월 5일 : 프로젝트 환경 설정과 생성/실행 확인 완료
+### 8월 29일 : OT (1주차)
+### 9월 5일 : 프로젝트 환경 설정과 생성/실행 확인 완료 (2주차)
 A new Flutter project.
 
 ## Getting Started
