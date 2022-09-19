@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart'; // import 패키지를 엽니다.
+import 'package:flutter/material.dart'; // 앱 화면을 보여주게 하는 import 패키지를 엽니다.
 
 void main() {
   // 시작점 함수
-  runApp(const MyApp());
+  runApp(const MyApp()); // 플러터 앱 기본 실행 함수, 객체 생성
 }
 
 class MyApp extends StatelessWidget {
@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    //화면에 그리기 위한 build 메서드(없으면 안된다.)
     // 위젯 build 함수 재정의, StatlessWidget 위젯에 정의되어 있음(고정)
     return MaterialApp(
       // 화면에 그릴 MaterialApp 위젯 반환
@@ -18,9 +19,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         // 메인 테마 설정
         // 색상 및 타이틀 수정 - hot reload 기능 확인
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.red, // 타이틀 바 색 변경
       ),
-      home: const MyHomePage(title: 'Flutter 데모 Home Page 안녕하세요!!'),
+      home: const MyHomePage(
+          title: 'Flutter 데모 Home Page 안녕하세요!!'), // 타이틀 바에 뜨는 제목 문구 변경
     );
   }
 }
@@ -73,23 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
@@ -105,7 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.thumb_up), // 버튼 만들기
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   } // 수정을 위한 주석
