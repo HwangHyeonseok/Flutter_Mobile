@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'; // import 패키지를 엽니다.
 
 void main() {
+  // 시작점 함수
   runApp(const MyApp());
 }
 
@@ -10,26 +11,22 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    // 위젯 build 함수 재정의, StatlessWidget 위젯에 정의되어 있음(고정)
     return MaterialApp(
-      title: 'Flutter Demo',
+      // 화면에 그릴 MaterialApp 위젯 반환
+      title: 'Flutter Demo1',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
+        // 메인 테마 설정
+        // 색상 및 타이틀 수정 - hot reload 기능 확인
+        primarySwatch: Colors.red,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Flutter 데모 Home Page 안녕하세요!!'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
+  // StatefulWidget 변경
   const MyHomePage({super.key, required this.title});
 
   // This widget is the home page of your application. It is stateful, meaning
