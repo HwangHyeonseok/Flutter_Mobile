@@ -6,27 +6,43 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  // extends : 상속 키워드
+  const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    var url =
+        "https://www.google.co.kr/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"; //구글 이미지 주소를 입력한다.
     //화면에 그리기 위한 build 메서드(없으면 안된다.)
     // 위젯 build 함수 재정의, StatlessWidget 위젯에 정의되어 있음(고정)
     return MaterialApp(
       // 화면에 그릴 MaterialApp 위젯 반환
-      title: 'Flutter Demo1',
-      theme: ThemeData(
-        // 메인 테마 설정
-        // 색상 및 타이틀 수정 - hot reload 기능 확인
-        primarySwatch: Colors.red, // 타이틀 바 색 변경
-      ),
-      home: const MyHomePage(
-          title: 'Flutter 데모 Home Page 안녕하세요!!'), // 타이틀 바에 뜨는 제목 문구 변경
+      title: '플러터 앱',
+      home: Scaffold(
+          // 디자인 전체 구조(FRAME)를 잡아준다.
+          appBar: AppBar(title: const Text("타이틀")), // 앱의 상단 타이틀
+          body: Column(
+            children: <Widget>[
+              // 텍스트 및 아이콘 추가해보기
+              const Text(
+                "나의 첫 플러터 앱\n",
+                style: TextStyle(
+                    color: Colors.blueGrey,
+                    fontSize: 25.0,
+                    fontWeight: FontWeight.bold),
+              ),
+              const Text("이제 앱 개발 해보자\n"),
+              const Icon(Icons.videocam, color: Colors.amber, size: 100.0),
+              SizedBox(height: 200, width: 300, child: Image.network(url)),
+              Image.asset('assets/images/googlelogo_color_272x92dp.png')
+            ],
+          )),
     );
   }
 }
 
+/*
 class MyHomePage extends StatefulWidget {
   // StatefulWidget 변경
   const MyHomePage({super.key, required this.title});
@@ -90,9 +106,10 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
-        tooltip: 'Increment',
+        tooltip: '좋아요!',
         child: const Icon(Icons.thumb_up), // 버튼 만들기
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   } // 수정을 위한 주석
 }
+*/
