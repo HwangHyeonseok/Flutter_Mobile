@@ -12,6 +12,49 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    return MaterialApp(
+        title: '플러터 앱',
+        home: Scaffold(
+            appBar: AppBar(title: const Text("타이틀")), // 앱의 상단 타이틀
+            body: SafeArea(
+                child: Row(
+              //mainAxisAlignment: MainAxisAlignment.start, // 왼쪽 위
+              //mainAxisAlignment: MainAxisAlignment.end, // 오른쪽 아래
+              //mainAxisAlignment: MainAxisAlignment.center, // 가운데
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly, // 균등 분배 정렬
+
+              children: <Widget>[
+                Container(
+                  margin: const EdgeInsets.all(5), // EdgeInsets 여백 설정
+                  padding: const EdgeInsets.all(10),
+                  width: 100,
+                  height: 100,
+                  color: Colors.green,
+                  child: const Text('Container 1'),
+                ),
+                Container(
+                  margin: const EdgeInsets.all(25),
+                  padding: const EdgeInsets.all(5),
+                  width: 100,
+                  height: 100,
+                  color: Colors.blue,
+                  child: const Text('Container 2'),
+                ),
+                Container(
+                  margin: const EdgeInsets.all(40),
+                  width: 100,
+                  height: 100,
+                  color: Colors.red,
+                  child: const Text('Container 3'),
+                ),
+              ],
+            ))));
+  }
+}
+
+
+  /*
+  Widget build(BuildContext context) {
     var url =
         "https://www.google.co.kr/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"; //구글 이미지 주소를 입력한다.
     //화면에 그리기 위한 build 메서드(없으면 안된다.)
@@ -41,6 +84,8 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+*/
+
 
 /*
 class MyHomePage extends StatefulWidget {
