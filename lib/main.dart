@@ -1,5 +1,206 @@
 import 'package:flutter/material.dart';
 
+void main() => runApp(const MyApp());
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+  @override
+  Widget build(BuildContext context) {
+    const title = 'InkWell Demo';
+    return const MaterialApp(
+      title: title,
+      home: MyHomePage(title: title),
+    );
+  }
+}
+
+class MyHomePage extends StatelessWidget {
+  final String title;
+  const MyHomePage({super.key, required this.title});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(title),
+      ),
+      body: const Center(
+        child: MyButton(),
+      ),
+    );
+  }
+}
+
+class MyButton extends StatelessWidget {
+  const MyButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+// The InkWell wraps the custom flat button widget.
+    return InkWell(
+// When the user taps the button, show a snackbar.
+      onTap: () {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('Snack bar : Tap'),
+        ));
+      },
+      child: const Padding(
+        padding: EdgeInsets.all(12.0),
+        child: Text('Flat Button'),
+      ),
+    );
+  }
+}
+
+
+/* PPT 9주차 13~16
+import 'package:flutter/material.dart';
+
+void main() => runApp(const MyApp());
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+  static const String _title = 'Flutter Code Sample';
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      title: _title,
+      home: MyStatefulWidget(),
+    );
+  }
+}
+
+class MyStatefulWidget extends StatefulWidget {
+  const MyStatefulWidget({super.key});
+
+  @override
+  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+}
+
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  bool _lightIsOn = false;
+  Color _color = Colors.white;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        color: _color,
+        height: 200.0,
+        width: 300.0,
+        alignment: FractionalOffset.center,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Icon(
+                Icons.lightbulb_outline,
+                color: _lightIsOn ? Colors.yellow.shade600 : Colors.black,
+                size: 60,
+              ),
+            ),
+            GestureDetector(
+              // 제스쳐 이벤트로 묶음
+              onTap: () {
+                setState(() {
+                  // 상태 객체 갱신
+                  // Toggle light when tapped.
+                  _lightIsOn = !_lightIsOn;
+                  _color == Colors.yellow
+                      ? _color = Colors.white
+                      : _color = Colors.yellow;
+                });
+              },
+              child: Container(
+                color: Colors.yellow.shade600,
+                padding: const EdgeInsets.all(8),
+                // Change button text when light changes state.
+                child: Text(_lightIsOn
+                    ? 'TURN LIGHT OFF(WITH BACKGROUND)'
+                    : 'TURN LIGHT ON(WITH BACKGROUND)'),
+              ),
+              onDoubleTap: () {
+                print('더블 터치');
+                // 이벤트 확인용 - 터미널 창 확인
+                setState(() {
+// Toggle light when tapped.
+                  _lightIsOn = !_lightIsOn;
+                  _color == Colors.yellow
+                      ? _color = Colors.blue
+                      : _color = Colors.yellow;
+                });
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+*/
+
+/* 9주차 8-9 슬라이드
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MaterialApp(
+    title: 'Named routes Demo',
+    // "/"을 앱이 시작하게 될 route로 지정
+    initialRoute: '/',
+    routes: {
+      // "/" Route로 이동하면, FirstScreen 위젯을 생성
+      '/': (context) => const FirstScreen(),
+      // "/second" route로 이동하면, SecondScreen 위젯을 생성
+      '/second': (context) => const SecondScreen(),
+    },
+  ));
+}
+
+class FirstScreen extends StatelessWidget {
+  const FirstScreen({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('First Screen'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          child: const Text('Launch screen'),
+          onPressed: () {
+            // Named route를 사용하여 두 번째 화면으로 이동
+            Navigator.pushNamed(context, '/second');
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class SecondScreen extends StatelessWidget {
+  const SecondScreen({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Second Screen"),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            // 현재 route를 스택에서 제거되어 뒤돌아기
+            Navigator.pop(context);
+          },
+          child: const Text('Go back!'),
+        ),
+      ),
+    );
+  }
+}
+*/
+
+/* 9주차 6-7 슬라이드
 void main() {
   runApp(const MaterialApp(
     title: 'Navigation Basics',
@@ -50,28 +251,7 @@ class SecondRoute extends StatelessWidget {
     );
   }
 }
-
-class SecondScreen extends StatelessWidget {
-  const SecondScreen({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Second Screen"),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            // 현재 route를 스택에서 제거되어 뒤돌아기
-            Navigator.pop(context);
-          },
-          child: const Text('Go back!'),
-        ),
-      ),
-    );
-  }
-}
-
+*/
 
 /* 8주차
 import 'package:flutter/material.dart';
