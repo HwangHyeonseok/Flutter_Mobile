@@ -1,3 +1,160 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MaterialApp(
+    title: 'Navigation Basics',
+    home: FirstRoute(), // 기본 화면
+  ));
+}
+
+class FirstRoute extends StatelessWidget {
+  // 첫번째 화면 위젯 정의
+  const FirstRoute({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('First Route'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          child: const Text('Open route'),
+          onPressed: () {
+            Navigator.push(
+              context, // 초기 위젯 위치 정보
+              MaterialPageRoute(builder: (context) => SecondRoute()),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class SecondRoute extends StatelessWidget {
+  // 두번째 화면 정의
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Second Route"),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context); // 뒤 돌아가기 동작
+          },
+          child: const Text('Go back!'),
+        ),
+      ),
+    );
+  }
+}
+
+class SecondScreen extends StatelessWidget {
+  const SecondScreen({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Second Screen"),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            // 현재 route를 스택에서 제거되어 뒤돌아기
+            Navigator.pop(context);
+          },
+          child: const Text('Go back!'),
+        ),
+      ),
+    );
+  }
+}
+
+
+/* 8주차
+import 'package:flutter/material.dart';
+import 'package:english_words/english_words.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      title: 'View 1 : Favorite List',
+      home: RandomWords(), // REMOVE Scaffold
+    );
+  }
+}
+
+class RandomWords extends StatefulWidget {
+  const RandomWords({super.key});
+  @override
+  State<RandomWords> createState() => _RandomWordsState();
+}
+
+class _RandomWordsState extends State<RandomWords> {
+  final wordPair = WordPair.random(); // NEW
+  final _suggestions = <WordPair>[]; // 저장할 배열
+  final _saved = <WordPair>{}; // NEW
+
+  final _biggerFont = const TextStyle(fontSize: 18);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.separated(
+      padding: const EdgeInsets.all(16.0), // 전체 여백
+      itemCount: _suggestions.length,
+      separatorBuilder: (BuildContext context, int index) => // 중괄호 생략,
+          const Divider(thickness: 3), // 구분선 안의 선의 두께
+
+      itemBuilder: (context, i) {
+        if (i.isOdd) return const Divider(); // 홀수
+
+        final index = i ~/ 2; // 몫 구하기
+        if (index >= _suggestions.length) {
+          _suggestions.addAll(generateWordPairs().take(10));
+        }
+
+        final alreadySaved = _saved.contains(_suggestions[index]); // NEW
+
+        return ListTile(
+          // 목록 타일 리턴
+          title: Text(
+            _suggestions[index].asPascalCase,
+            style: _biggerFont,
+          ),
+          trailing: Icon(
+// NEW from here ...
+            alreadySaved ? Icons.favorite : Icons.favorite_border,
+            color: alreadySaved ? Colors.red : null,
+            semanticLabel: alreadySaved ? 'Remove from saved' : 'Save',
+          ),
+          onTap: () {
+// NEW from here ...
+            setState(() {
+              if (alreadySaved) {
+                _saved.remove(_suggestions[index]);
+              } else {
+                _saved.add(_suggestions[index]);
+              }
+            }); // to here.
+          },
+        );
+      },
+    );
+  }
+}
+
+*/
+
+/* 5주차 끝
 import 'package:flutter/material.dart'; // 앱 화면을 보여주게 하는 import 패키지를 엽니다.
 
 void main() {
@@ -51,9 +208,9 @@ class MyApp extends StatelessWidget {
             ))));
   }
 }
+*/
 
-
-  /*
+/* 5주차 중간
   Widget build(BuildContext context) {
     var url =
         "https://www.google.co.kr/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"; //구글 이미지 주소를 입력한다.
@@ -85,7 +242,6 @@ class MyApp extends StatelessWidget {
   }
 }
 */
-
 
 /*
 class MyHomePage extends StatefulWidget {
